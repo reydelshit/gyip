@@ -14,12 +14,16 @@ function App() {
   }, [])
 
   const getApi = async () => {
-    const fetchApi = await fetch('http://ip-api.com/json')
-    const get = await fetchApi.json()
+    try{
+      const fetchApi = await fetch('https://ipinfo.io?token=5bc1331736d2eb')
+      const get = await fetchApi.json()
+      console.log(get)
+      setData([get])
 
-    console.log(get)
+    } catch (error) {
+      console.log(error, 'error')
+    }
 
-    setData([get])
   }
 
   const getIp = () => {
@@ -37,16 +41,17 @@ function App() {
 
       {determine && <div>
         {data.map((IPaddressData, index) => <div key={index}>
-          <h1>{IPaddressData.query}</h1>
+          <h1>{IPaddressData.ip}</h1>
           <button onClick={moreDetails}>more details</button>
             {details && <div>
-              <h1>{IPaddressData.city}</h1>
-              <h1>{IPaddressData.country}</h1>
-              <h1>{IPaddressData.countryCode}</h1>
-              <h1>{IPaddressData.isp}</h1>
-              <h1>{IPaddressData.region}</h1>
-              <h1>{IPaddressData.regionName}</h1>
-              <h1>{IPaddressData.zip}</h1>
+              <span><h1>{IPaddressData.city}</h1></span>
+              <span><h1>{IPaddressData.region}</h1></span>
+              <span><h1>{IPaddressData.country}</h1></span>
+              <span><h1>{IPaddressData.org}</h1></span>
+              <span><h1>{IPaddressData.hostname}</h1></span>
+              <span><h1>{IPaddressData.timezone}</h1></span>
+              <span><h1>{IPaddressData.postal}</h1></span>
+
             </div>}
         </div>)}
         </div>}
