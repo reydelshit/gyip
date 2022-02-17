@@ -26,7 +26,7 @@ function App() {
 
     } catch (error) {
       console.log(error, 'error')
-      setError(error, 'error can"t get the data: make sure your browser did not blocked anything')
+      setError('error can"t get the data: make sure your browser did not blocked anything')
     }
 
   }
@@ -40,9 +40,7 @@ function App() {
   }
   return (
     <div className="main">
-      {error && <div>{error}</div>}
       <h1>wanna get your IP Address Details?</h1>
-
       {!determine && <div className='hand__button' onClick={getIp}>
         <button>get yo ip details
           <img src={hands} alt="hands" />
@@ -50,6 +48,7 @@ function App() {
       </div>}
 
       {determine && <div>
+        {error && <div>{error}</div>}
         {data.map((IPaddressData, index) => <div key={index}>
           <h1>{IPaddressData.ip}</h1>
           <button onClick={moreDetails}>more details</button>
@@ -61,7 +60,6 @@ function App() {
               <span><h1>{IPaddressData.hostname}</h1></span>
               <span><h1>{IPaddressData.timezone}</h1></span>
               <span><h1>{IPaddressData.postal}</h1></span>
-
             </div>}
         </div>)}
         </div>}
