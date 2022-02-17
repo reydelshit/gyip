@@ -10,6 +10,7 @@ function App() {
 
   const [determine, setDeterrmine] = useState(false)
   const [details, setDetails] = useState(false)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     getApi()
@@ -25,6 +26,7 @@ function App() {
 
     } catch (error) {
       console.log(error, 'error')
+      setError(error, 'error can"t get the data: make sure your browser did not blocked anything')
     }
 
   }
@@ -38,6 +40,7 @@ function App() {
   }
   return (
     <div className="main">
+      {error && <div>{error}</div>}
       <h1>wanna get your IP Address Details?</h1>
 
       {!determine && <div className='hand__button' onClick={getIp}>
