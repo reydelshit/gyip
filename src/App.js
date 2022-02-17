@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 
+import hands from "./assets/hand3.png"
+
+
 function App() {
 
   const [data, setData] = useState([])
@@ -34,10 +37,14 @@ function App() {
     setDetails(true)
   }
   return (
-    <div className="App">
+    <div className="main">
       <h1>wanna get your IP Address Details?</h1>
 
-      <button onClick={getIp}>click me</button>
+      {!determine && <div className='hand__button' onClick={getIp}>
+        <button>get yo ip details
+          <img src={hands} alt="hands" />
+        </button>
+      </div>}
 
       {determine && <div>
         {data.map((IPaddressData, index) => <div key={index}>
