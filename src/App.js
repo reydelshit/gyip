@@ -29,19 +29,27 @@ function App() {
   }, [])
 
   const getApi = async () => {
-    try{
-        setLoading(true)
+
+      setLoading(true)
       setTimeout( async () => {
-        const fetchApi = await fetch('https://ipinfo.io?token=5bc1331736d2eb')        
-        const get = await fetchApi.json()
-        setLoading(false)
-        console.log(get)
-        setData([get])
-      }, 5000);
-    } catch (error) {
-      console.log(error, 'error')
-      setError('error can"t get the data: make sure your browser did not blocked anything')
-    }
+        try{
+          const fetchApi = await fetch('https://ipinfo.io?token=5bc1331736d2eb')        
+          const get = await fetchApi.json()
+          console.log(get)
+          setData([get])
+          setLoading(false)
+
+        } catch {
+          setError("error can't get the data: make sure your browser did not blocked anything")
+        }
+      }, 3000);
+
+      // setLoading(true)
+      // const fetchApi = await fetch('https://ipinfo.io?token=5bc1331736d2eb')        
+      // const get = await fetchApi.json()
+      // console.log(get)
+      // setData([get])
+      // setLoading(false)
   }
 
   const getIp = () => {
