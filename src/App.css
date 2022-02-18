@@ -236,6 +236,10 @@ footer{
 
   }
 
+  .showMore__details{
+    width: 100vw;
+  }
+
   .more_details{
     padding: 0;
 
