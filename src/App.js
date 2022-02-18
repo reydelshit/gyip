@@ -25,11 +25,13 @@ function App() {
   const getApi = async () => {
     try{
         setLoading(true)
+      setTimeout( async () => {
         const fetchApi = await fetch('https://ipinfo.io?token=5bc1331736d2eb')        
         const get = await fetchApi.json()
         setLoading(false)
         console.log(get)
         setData([get])
+      }, 5000);
     } catch (error) {
       console.log(error, 'error')
       setError('error can"t get the data: make sure your browser did not blocked anything')
