@@ -11,7 +11,7 @@ const MoreDetails = ({determine, loading, error, data, moreDetails, details, han
         {error && <div>{error}</div>}
         {data.map((IPaddressData, index) => <div className='showMore__details' key={index}>
             <div className='top__details'>
-                <h1 className='more__details__title'>your ip address is:</h1>
+                <span className='more__details__title'>your ip address is:</span>
                 <h1>{IPaddressData.ip}</h1>
                 <span className='hand__container'>
                     {details ? <img onClick={moreDetails} src={handUp} alt="handsdown" /> : <div className='handsUp__container'><span>see more</span> <img onClick={moreDetails} src={handDown} alt="handsdown" /></div>}
