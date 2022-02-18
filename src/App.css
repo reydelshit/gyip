@@ -7,6 +7,7 @@ body{
   
   display: grid;
   place-content: center;
+  place-items: center;
   overflow: hidden;
   background: #282c34;
   background-size: contain;
@@ -15,8 +16,6 @@ body{
 }
 
 .main {
-  /* width: 100%;
-  height: 100%; */
   text-align: center;
   display: grid;
   place-content: center;
@@ -31,30 +30,24 @@ body{
   place-content: center;
   place-items: center;
   width: 20rem;
-  
-
-  /* border: 1px solid yellow; */
 }
 
-.main img{
+.main .main__hand{
 
   display: block;
+  margin: 0 auto;
   position: absolute;
-  align-self: center;
   top: -60px;
-  left: 55px;
+  left: 0;
   height: 25rem;
-  width: 12rem;
   cursor: pointer;
-  /* border: 1px solid orange; */
-
-  transform: rotate(-10deg);
+  transform: rotate(50deg);
   transition: transform 0.3s;
 }
 
 
 
-.hand__button img:hover{
+.hand__button .main__hand:hover{
   transform: rotate(-30deg);
 }
 
@@ -72,11 +65,22 @@ body{
 
 }
 
-
 .hand__button button:hover{
-
   background-color: rgb(47, 148, 148);
+}
 
+.handDown__container{
+  display: grid;
+  place-items: center;
+  position: relative;
 
 }
 
+
+.handDown__container img{
+
+  display: block;
+  height: 10rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}

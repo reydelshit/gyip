@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
+import { BounceLoader } from 'react-spinners';
 import './App.css';
 
-import hands from "./assets/hand3.png"
+import hands from "./assets/hand-4.png"
+import handDown from "./assets/hand-down.png"
+import handUp from "./assets/hand-up.png"
+
 
 
 function App() {
@@ -12,23 +16,24 @@ function App() {
   const [details, setDetails] = useState(false)
   const [error, setError] = useState('')
 
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
     getApi()
-    
   }, [])
 
   const getApi = async () => {
     try{
-      const fetchApi = await fetch('https://ipinfo.io?token=5bc1331736d2eb')
-      const get = await fetchApi.json()
-      console.log(get)
-      setData([get])
-
+        setLoading(true)
+        const fetchApi = await fetch('https://ipinfo.io?token=5bc1331736d2eb')        
+        const get = await fetchApi.json()
+        setLoading(false)
+        console.log(get)
+        setData([get])
     } catch (error) {
       console.log(error, 'error')
       setError('error can"t get the data: make sure your browser did not blocked anything')
     }
-
   }
 
   const getIp = () => {
@@ -36,22 +41,35 @@ function App() {
   }
 
   const moreDetails = () => {
-    setDetails(true)
+    setDetails(!details)
   }
+
+
   return (
     <div className="main">
-      <h1>wanna get your IP Address Details?</h1>
+      {!determine && <h1>wanna get your IP Address Details?</h1>}
       {!determine && <div className='hand__button' onClick={getIp}>
         <button>get yo ip details
-          <img src={hands} alt="hands" />
+          <img className='main__hand' src={hands} alt="hands" />
         </button>
       </div>}
-
       {determine && <div>
+      {loading && <BounceLoader color={'aqua'} size={'200px'}/>}
+
         {error && <div>{error}</div>}
-        {data.map((IPaddressData, index) => <div key={index}>
+        {data.map((IPaddressData, index) => <div className='showMore__details' key={index}>
+          <h1>your ip address is:</h1>
           <h1>{IPaddressData.ip}</h1>
-          <button onClick={moreDetails}>more details</button>
+          <span className='handDown__container'>
+            {details ?  <div>
+              close
+              <img onClick={moreDetails} src={handUp} alt="handsdown" />
+            </div> : 
+            <div>
+              show more
+              <img onClick={moreDetails} src={handDown} alt="handsdown" />
+            </div> }
+          </span>
             {details && <div>
               <span><h1>{IPaddressData.city}</h1></span>
               <span><h1>{IPaddressData.region}</h1></span>
