@@ -1,13 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap');
+
 *{
   padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   color: aqua;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 body{
   
-  display: grid;
-  place-content: center;
-  place-items: center;
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
   background: #282c34;
   background-size: contain;
@@ -15,13 +20,45 @@ body{
   background-attachment: fixed;
 }
 
-.main {
-  text-align: center;
-  display: grid;
-  place-content: center;
-  place-items: center;
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 2em;
+  font-weight: 600;
+  font-size: 2rem;
+}
+header div{
+  cursor: pointer;
+
 }
 
+.main {
+  width: 100%;
+}
+
+.determiner{
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+.determiner h1{
+
+  margin-bottom: 2rem;
+}
+
+.loader{
+  width: 100%;
+  height: 100%;
+  margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .hand__button{
 
@@ -54,33 +91,106 @@ body{
 .hand__button button{
 
   width: 20rem;
-  padding: 3em;
-  font-size: bold;
+  padding: 2rem;
+  font-size: 1rem;
   display: block;
   cursor: pointer;
   background: none;
   border: none;
   border-radius: 50px;
-  border: 1px solid aqua;
+  border: 3px solid aqua;
 
 }
 
 .hand__button button:hover{
-  background-color: rgb(47, 148, 148);
+  color: #282c34;
+  background-color: rgb(83, 211, 211);
 }
 
-.handDown__container{
+.more_details{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.top__details{
+  align-items: center;
+  width: 40rem;
+  height: 16.5rem;
+  padding: 0.5rem;
+  background: #3b4049;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 4px #60656e;
+}
+
+.handsUp__container{
+  margin-top: 2rem;
+}
+
+.handsUp__container span{
+  color: white;
+}
+
+.handsUp__container img{
+  margin-top: -25px;
+}
+
+.hand__container{
   display: grid;
   place-items: center;
-  position: relative;
-
 }
 
-
-.handDown__container img{
+.hand__container img{
 
   display: block;
   height: 10rem;
   cursor: pointer;
   transition: transform 0.3s;
+}
+
+.more__details{
+
+  display: grid;
+  align-items: center;
+  width: 40rem;
+  height: 17rem;
+  padding: 2rem;
+  background: #3b4049;
+  border-radius: 8px;
+
+}
+
+.details__container{
+  text-align: start !important;
+}
+
+
+.details__container span{
+  display: inline-block;
+}
+
+.details__container .more__details__title{
+  text-align: start !important;
+
+  margin-right: 10px;
+  color: white;
+  font-weight: 600;
+}
+
+.more__details__title{
+  color: white;
+  font-weight: 600;
+}
+
+
+
+footer{
+
+  position: absolute;
+  padding: 1rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

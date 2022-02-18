@@ -1,10 +1,16 @@
 import { useEffect, useState } from 'react';
-import { BounceLoader } from 'react-spinners';
 import './App.css';
 
 import hands from "./assets/hand-4.png"
 import handDown from "./assets/hand-down.png"
 import handUp from "./assets/hand-up.png"
+
+// components 
+
+import Header from "./components/Header"
+import Determiner from './components/Determiner';
+import MoreDetails from './components/MoreDetails';
+import Footer from "./components/Footer"
 
 
 
@@ -49,40 +55,10 @@ function App() {
 
   return (
     <div className="main">
-      {!determine && <h1>wanna get your IP Address Details?</h1>}
-      {!determine && <div className='hand__button' onClick={getIp}>
-        <button>get yo ip details
-          <img className='main__hand' src={hands} alt="hands" />
-        </button>
-      </div>}
-      {determine && <div>
-      {loading && <BounceLoader color={'aqua'} size={'200px'}/>}
-
-        {error && <div>{error}</div>}
-        {data.map((IPaddressData, index) => <div className='showMore__details' key={index}>
-          <h1>your ip address is:</h1>
-          <h1>{IPaddressData.ip}</h1>
-          <span className='handDown__container'>
-            {details ?  <div>
-              close
-              <img onClick={moreDetails} src={handUp} alt="handsdown" />
-            </div> : 
-            <div>
-              show more
-              <img onClick={moreDetails} src={handDown} alt="handsdown" />
-            </div> }
-          </span>
-            {details && <div>
-              <span><h1>{IPaddressData.city}</h1></span>
-              <span><h1>{IPaddressData.region}</h1></span>
-              <span><h1>{IPaddressData.country}</h1></span>
-              <span><h1>{IPaddressData.org}</h1></span>
-              <span><h1>{IPaddressData.hostname}</h1></span>
-              <span><h1>{IPaddressData.timezone}</h1></span>
-              <span><h1>{IPaddressData.postal}</h1></span>
-            </div>}
-        </div>)}
-        </div>}
+      <Header />
+      <Determiner determine={determine} getIp={getIp} hands={hands}/>
+      <MoreDetails determine={determine} loading={loading} error={error} data={data} moreDetails={moreDetails} details={details} handUp={handUp} handDown={handDown} />
+      <Footer />
     </div>
   );
 }
