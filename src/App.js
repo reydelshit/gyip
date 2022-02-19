@@ -25,12 +25,12 @@ function App() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
     getApi()
   }, [])
 
-  const getApi = async () => {
+  const getApi = () => {
 
-      setLoading(true)
       setTimeout( async () => {
         try{
           const fetchApi = await fetch('https://ipinfo.io?token=5bc1331736d2eb')        
